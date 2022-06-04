@@ -1,0 +1,14 @@
+#top {
+  text-align: center;
+  padding: 30px;
+}
+
+.container {
+  margin-top: 10px;
+}
+.row {
+  margin-bottom: 10px;
+}
+#lista {
+  margin-bottom: 10px;
+}
