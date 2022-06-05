@@ -12,8 +12,16 @@ function dividir() {
 }
 
 function agregarPago() {
-  users.push(user.value);
-  pagos.push(pay.value);
+  if (users.includes(user.value)) {
+    for (let i = 0; i < users.length; i++) {
+      if (users[i] === user.value) {
+        pagos[i] = Number(pagos[i]) + Number(pay.value);
+      }
+    }
+  } else {
+    users.push(user.value);
+    pagos.push(pay.value);
+  }
 }
 
 function actualizarLista() {
