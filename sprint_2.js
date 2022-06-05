@@ -4,6 +4,8 @@ const lista = document.getElementById("lista");
 const resultado = document.getElementById("total");
 const user = document.getElementById("name");
 const pay = document.getElementById("pay");
+const consulta = document.getElementById("consultaUser");
+const consultaResult = document.getElementById("userGasto");
 
 function dividir() {
   agregarPago();
@@ -45,8 +47,24 @@ function pagoIndividual() {
                         A cada uno le toca aportar: $${pagoInd}`;
 }
 
+function miGasto() {
+  if (users.includes(consulta.value)) {
+    for (let i = 0; i < users.length; i++) {
+      if (users[i] == consulta.value) {
+        consultaResult.innerText = consulta.value + " gastó: $" + pagos[i];
+      }
+    }
+  } else alert("Usuario no encontrado");
+}
+
 pay.addEventListener("keypress", function (dividir) {
   if (dividir.key === "Enter") {
     document.getElementById("boton").click();
+  }
+});
+
+consulta.addEventListener("keypress", function (miGasto) {
+  if (miGasto.key === "Enter") {
+    document.getElementById("botonConsulta").click();
   }
 });

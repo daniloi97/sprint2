@@ -19,7 +19,7 @@
     </div>
     <form>
       <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-start">
           <div class="m-2 col-auto">
             <input
               id="name"
@@ -50,8 +50,32 @@
 
         <ul id="lista" class="list-group"></ul>
         <div id="total"></div>
+        <div class="container">
+          <div class="row justify-content-start">
+            <div class="m-2 col-auto">
+              <input
+                class="form-control"
+                type="text"
+                id="consultaUser"
+                placeholder="Cuanto gastó?"
+              />
+            </div>
+            <div class="m-2 col-auto">
+              <button
+                id="botonConsulta"
+                type="button"
+                class="btn btn-success"
+                onclick="miGasto()"
+              >
+                $
+              </button>
+            </div>
+          </div>
+          <div id="userGasto"></div>
+        </div>
       </div>
     </form>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
