@@ -28,7 +28,9 @@ function actualizarLista() {
   const li = document.createElement("li");
   const text = document.createTextNode(user.value + " gastó $" + pay.value);
   li.classList.add("list-group-item");
-
+  if (lista.lastChild) {
+    lista.removeChild(lista.lastChild);
+  }
   li.appendChild(text);
   lista.appendChild(li);
 }
