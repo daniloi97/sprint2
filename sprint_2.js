@@ -9,24 +9,20 @@ const consultaResult = document.getElementById("userGasto");
 
 function dividir() {
   agregarPago();
+  actualizarLista();
+  pagoIndividual();
 }
 
 function agregarPago() {
-  if (isNaN(pay.value)) {
-    alert("Ingrese un numero");
-  } else {
-    if (users.includes(user.value)) {
-      for (let i = 0; i < users.length; i++) {
-        if (users[i] === user.value) {
-          pagos[i] = Number(pagos[i]) + Number(pay.value);
-        }
+  if (users.includes(user.value)) {
+    for (let i = 0; i < users.length; i++) {
+      if (users[i] === user.value) {
+        pagos[i] = Number(pagos[i]) + Number(pay.value);
       }
-    } else {
-      users.push(user.value);
-      pagos.push(pay.value);
     }
-    actualizarLista();
-    pagoIndividual();
+  } else {
+    users.push(user.value);
+    pagos.push(pay.value);
   }
 }
 
