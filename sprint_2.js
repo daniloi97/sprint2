@@ -1,5 +1,5 @@
-const pagos = [];
-const users = [];
+const payments = [];
+
 const lista = document.getElementById("lista");
 const resultado = document.getElementById("total");
 const user = document.getElementById("name");
@@ -14,57 +14,36 @@ function dividir() {
 }
 
 function agregarPago() {
-  if (users.includes(user.value)) {
-    for (let i = 0; i < users.length; i++) {
-      if (users[i] === user.value) {
-        pagos[i] = Number(pagos[i]) + Number(pay.value);
-      }
-    }
-  } else {
-    users.push(user.value);
-    pagos.push(pay.value);
-  }
+  payments.push({
+    name: user.value,
+    pago: pay.value,
+    fecha: new Date().toLocaleString(),
+  });
 }
 
 function actualizarLista() {
   const li = document.createElement("li");
-  const text = document.createTextNode(user.value + " gastó $" + pay.value);
+  const ultimoPago = payments[payments.length - 1];
+  const text = document.createTextNode(
+    `${ultimoPago.name} gastó $${ultimoPago.pago} Fecha: ${ultimoPago.fecha}`
+  );
   li.classList.add("list-group-item");
-  if (lista.lastChild) {
-    lista.removeChild(lista.lastChild);
-  }
   li.appendChild(text);
   lista.appendChild(li);
 }
 
 function pagoIndividual() {
   let suma = 0;
-  for (let pago of pagos) {
-    suma += Number(pago);
+  for (let p of payments) {
+    suma += Number(p.pago);
   }
-  const pagoInd = Math.ceil(suma / users.length);
+  const pagoInd = Math.ceil(suma / payments.length);
   resultado.innerText = `Total: $${suma}
                         A cada uno le toca aportar: $${pagoInd}`;
-}
-
-function miGasto() {
-  if (users.includes(consulta.value)) {
-    for (let i = 0; i < users.length; i++) {
-      if (users[i] == consulta.value) {
-        consultaResult.innerText = consulta.value + " gastó: $" + pagos[i];
-      }
-    }
-  } else alert("Usuario no encontrado");
 }
 
 pay.addEventListener("keypress", function (dividir) {
   if (dividir.key === "Enter") {
     document.getElementById("boton").click();
-  }
-});
-
-consulta.addEventListener("keypress", function (miGasto) {
-  if (miGasto.key === "Enter") {
-    document.getElementById("botonConsulta").click();
   }
 });
