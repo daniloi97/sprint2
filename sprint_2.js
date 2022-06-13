@@ -4,8 +4,6 @@ const lista = document.getElementById("lista");
 const resultado = document.getElementById("total");
 const user = document.getElementById("name");
 const pay = document.getElementById("pay");
-const consulta = document.getElementById("consultaUser");
-const consultaResult = document.getElementById("userGasto");
 
 function dividir() {
   agregarPago();
